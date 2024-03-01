@@ -9,9 +9,9 @@ public class Main {
         System.out.println("Enter C for Circle");
         System.out.println("Enter R for Rectangle");
         System.out.println("Enter T for Triangle");
-        String choice = scanner.nextLine().toUpperCase();
+        String ch = scanner.nextLine().toUpperCase();
 
-        switch (choice) {
+        switch (ch) {
             case "C":
                 System.out.println("Enter the radius of the Circle:");
                 double radius = scanner.nextDouble();
