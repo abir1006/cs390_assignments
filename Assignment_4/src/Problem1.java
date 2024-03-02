@@ -1,7 +1,7 @@
 public class Problem1 {
 
     public static void main(String[] args) {
-        int rev = reverseInt(143);
+        int rev = reverseInt(471);
         System.out.println(rev);
     }
 
