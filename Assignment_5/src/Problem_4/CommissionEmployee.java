@@ -10,6 +10,10 @@ public class CommissionEmployee extends Employee {
         this.commissionRate = commissionRate / 100;
     }
 
+    public String toString() {
+        return " grassSales: " + grossSales + ", commissionRate " + commissionRate + "%";
+    }
+
     @Override
     public double getPayment() {
         return grossSales * commissionRate;

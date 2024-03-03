@@ -10,6 +10,10 @@ public class HourlyEmployee extends Employee{
         this.hours = hours;
     }
 
+    public String toString() {
+        return " wag: " + wage + ", hours" + hours;
+    }
+
     @Override
     public double getPayment() {
         return wage * hours;

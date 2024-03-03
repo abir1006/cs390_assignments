@@ -8,6 +8,10 @@ public class BasePlusCommissionEmployee extends CommissionEmployee{
         this.baseSalary = baseSalary;
     }
 
+    public String toString() {
+        return " baseSalary: " + baseSalary;
+    }
+
     @Override
     public double getPayment() {
         return baseSalary + super.getPayment();

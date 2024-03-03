@@ -8,6 +8,10 @@ public class SalariedEmployee extends Employee{
         this.weeklySalary = weeklySalary;
     }
 
+    public String toString() {
+        return " weeklySalary: " + weeklySalary;
+    }
+
     @Override
     public double getPayment() {
         return weeklySalary;
