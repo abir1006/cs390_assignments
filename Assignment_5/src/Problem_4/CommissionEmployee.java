@@ -7,7 +7,7 @@ public class CommissionEmployee extends Employee {
     public CommissionEmployee(String firstName, String lastName, String socialSecurityNumber, double grossSales, double commissionRate) {
         super(firstName, lastName, socialSecurityNumber);
         this.grossSales = grossSales;
-        this.commissionRate = commissionRate;
+        this.commissionRate = commissionRate / 100;
     }
 
     @Override
