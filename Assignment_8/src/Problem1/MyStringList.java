@@ -119,8 +119,10 @@ public class MyStringList {
         list.add(p2);
         list.add(p3);
 
-        list.find("Nur");
 
         System.out.println(list);
+
+        // find by last name == true
+        System.out.println(list.find("Nur"));
     }
 }
