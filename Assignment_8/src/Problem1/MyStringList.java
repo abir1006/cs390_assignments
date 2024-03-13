@@ -1,4 +1,6 @@
-package DataStructure;
+package Problem1;
+
+import Problem1.Person;
 
 import java.util.Arrays;
 import java.util.List;
@@ -16,12 +18,12 @@ public class MyStringList {
         this.numOfElements = 0;
     }
 
-    public void add(String s) {
+    public void add(Person s) {
         if (s == null) return;
         if (numOfElements == currentArray.length) {
             resize();
         }
-        currentArray[numOfElements] = s;
+        currentArray[numOfElements] = s.getLast();
         numOfElements = numOfElements + 1;
 
     }
@@ -46,34 +48,34 @@ public class MyStringList {
         return (numOfElements == 0);
     }
 
-    public boolean find(String s) {
+    public boolean find(Person s) {
         if (s == null) return false;
         for (int i = 0; i < numOfElements; i++) {
-            if (currentArray[i].equals(s))
+            if (currentArray[i].equals(s.getLast()))
                 return true;
         }
         return false;
     }
 
-    public void insert(String s, int pos) {
+    public void insert(Person s, int pos) {
         if (s == null) return;
         if (pos > numOfElements || pos < 0) return;
         if (numOfElements == currentArray.length)
             resize();
         String[] temp = new String[currentArray.length];
         System.arraycopy(currentArray, 0, temp, 0, pos);
-        temp[pos] = s;
+        temp[pos] = s.getLast();
         System.arraycopy(currentArray, pos, temp, pos + 1, currentArray.length - (pos + 1));
         currentArray = temp;
         ++numOfElements;
     }
 
-    public boolean remove(String s) {
+    public boolean remove(Person s) {
         if (numOfElements == 0) return false;
         if (s == null) return false;
         int index = -1;
         for (int i = 0; i < numOfElements; i++) {
-            if (currentArray[i].equals(s)) {
+            if (currentArray[i].equals(s.getLast())) {
                 index = i;
                 break;
             }
@@ -106,17 +108,22 @@ public class MyStringList {
     }
 
     public static void main(String[] args) {
-        MyStringList l=new MyStringList();
-        l.add("A");
-        l.add("B");
-        l.add("C");
-        l.add("D");
-        l.insert("E",2);
-        l.insert("G",3);
-        System.out.println("Find: "+l.find("F"));
-        System.out.println("At index 3: "+l.get(3));
-        l.remove("G");
-        l.remove("E");
-        System.out.println(l.toString());
+
+        Person p1 = new Person("Nur", "Abdoon", 41);
+        Person p2 = new Person("Sarah", "Ms", 35);
+        Person p3 = new Person("Tony", "Mr", 39);
+
+        MyStringList list =new MyStringList();
+
+        list.add(p1);
+        list.insert(p2,1);
+        list.insert(p3,2);
+
+        System.out.println("Find: " + list.find(p1));
+        System.out.println("At index 2: " + list.get(2));
+
+        list.remove(p3);
+
+        System.out.println(list.toString());
     }
 }
