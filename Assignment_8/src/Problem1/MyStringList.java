@@ -10,11 +10,11 @@ import java.util.List;
  */
 public class MyStringList {
     private final int INITIAL_LENGTH = 4;
-    private String[] currentArray;
+    private Person[] currentArray;
     private int numOfElements;
 
     public MyStringList() {
-        this.currentArray = new String[INITIAL_LENGTH];
+        this.currentArray = new Person[INITIAL_LENGTH];
         this.numOfElements = 0;
     }
 
@@ -23,12 +23,12 @@ public class MyStringList {
         if (numOfElements == currentArray.length) {
             resize();
         }
-        currentArray[numOfElements] = s.getLast();
+        currentArray[numOfElements] = s;
         numOfElements = numOfElements + 1;
 
     }
 
-    public String get(int i) {
+    public Person get(int i) {
         if (i < 0 || i >= numOfElements) {
             return null;
         }
@@ -39,7 +39,7 @@ public class MyStringList {
         System.out.println("Resizing");
         int len = currentArray.length;
         int newLen = 2 * len;
-        String[] newArray = new String[newLen];
+        Person[] newArray = new Person[newLen];
         System.arraycopy(currentArray, 0, newArray, 0, len);
         currentArray = newArray;
     }
@@ -48,10 +48,10 @@ public class MyStringList {
         return (numOfElements == 0);
     }
 
-    public boolean find(Person s) {
+    public boolean find(String s) {
         if (s == null) return false;
         for (int i = 0; i < numOfElements; i++) {
-            if (currentArray[i].equals(s.getLast()))
+            if (currentArray[i].getLast().equals(s))
                 return true;
         }
         return false;
@@ -62,9 +62,9 @@ public class MyStringList {
         if (pos > numOfElements || pos < 0) return;
         if (numOfElements == currentArray.length)
             resize();
-        String[] temp = new String[currentArray.length];
+        Person[] temp = new Person[currentArray.length];
         System.arraycopy(currentArray, 0, temp, 0, pos);
-        temp[pos] = s.getLast();
+        temp[pos] = s;
         System.arraycopy(currentArray, pos, temp, pos + 1, currentArray.length - (pos + 1));
         currentArray = temp;
         ++numOfElements;
@@ -75,13 +75,13 @@ public class MyStringList {
         if (s == null) return false;
         int index = -1;
         for (int i = 0; i < numOfElements; i++) {
-            if (currentArray[i].equals(s.getLast())) {
+            if (currentArray[i].equals(s)) {
                 index = i;
                 break;
             }
         }
         if (index == -1) return false;
-        String[] temp = new String[currentArray.length];
+        Person[] temp = new Person[currentArray.length];
         System.arraycopy(currentArray, 0, temp, 0, index);
         System.arraycopy(currentArray, index + 1, temp, index, currentArray.length - (index + 1));
         currentArray = temp;
@@ -103,7 +103,7 @@ public class MyStringList {
         return numOfElements;
     }
     public Object clone(){
-        String[] temp=Arrays.copyOf(currentArray,numOfElements);
+        Person[] temp=Arrays.copyOf(currentArray,numOfElements);
         return temp;
     }
 
@@ -113,17 +113,14 @@ public class MyStringList {
         Person p2 = new Person("Sarah", "Ms", 35);
         Person p3 = new Person("Tony", "Mr", 39);
 
-        MyStringList list =new MyStringList();
+        MyStringList list = new MyStringList();
 
         list.add(p1);
-        list.insert(p2,1);
-        list.insert(p3,2);
+        list.add(p2);
+        list.add(p3);
 
-        System.out.println("Find: " + list.find(p1));
-        System.out.println("At index 2: " + list.get(2));
+        list.find("Nur");
 
-        list.remove(p3);
-
-        System.out.println(list.toString());
+        System.out.println(list);
     }
 }

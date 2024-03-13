@@ -14,6 +14,10 @@ public class Person {
         return lastName;
     }
 
+    public String getFirstName() {
+        return firstName;
+    }
+
     @Override
     public String toString() {
             return "Person [lastName=" + lastName + "\n FirstName=" + firstName +
